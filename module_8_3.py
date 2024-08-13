@@ -35,6 +35,7 @@ class Car:
         self.model = model
         self.__vin = vin
         self.__numbers = numbers
+        # при создании объекта вызываются методы (@staticmethod)
         self.__is_valid_vin(vin)
         self.__is_valid_numbers(numbers)
 
@@ -56,13 +57,13 @@ class Car:
         else:
             return True
 
-
+# создаем собственный класс ошибки при наследовании от Exception
 class IncorrectVinNumber(Exception):
     def __init__(self, message):
         super().__init__(message)
         self.message = message
 
-
+# создаем собственный класс ошибки при наследовании от Exception
 class IncorrectCarNumbers(Exception):
     def __init__(self, message):
         super().__init__(message)
