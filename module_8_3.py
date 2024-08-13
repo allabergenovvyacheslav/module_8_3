@@ -31,15 +31,15 @@
 # объявлении атрибутов __vin и __numbers).
 
 class Car:
-    def __init__(self, model, __vin, __numbers):
+    def __init__(self, model, vin, numbers):
         self.model = model
-        self.__vin = __vin
-        self.__numbers = __numbers
-        self.__is_valid_vin(vin_number=__vin)
-        self.__is_valid_numbers(numbers=__numbers)
+        self.__vin = vin
+        self.__numbers = numbers
+        self.__is_valid_vin(vin)
+        self.__is_valid_numbers(numbers)
 
-    def __is_valid_vin(self, vin_number):
-        self.vin_number = vin_number
+    @staticmethod
+    def __is_valid_vin(vin_number):
         if not isinstance(vin_number, int):
             raise IncorrectVinNumber('Некорректный тип vin номер')
         elif vin_number not in range(1000000, 9999999):
@@ -47,8 +47,8 @@ class Car:
         else:
             return True
 
-    def __is_valid_numbers(self, numbers):
-        self.numbers = numbers
+    @staticmethod
+    def __is_valid_numbers(numbers):
         if not isinstance(numbers, str):
             raise IncorrectCarNumbers('Некорректный тип данных для номеров')
         elif len(numbers) != 6:
